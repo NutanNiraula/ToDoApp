@@ -20,6 +20,8 @@
 		1304E58E22DDDA7C00BAF809 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1304E58D22DDDA7C00BAF809 /* TaskModel.swift */; };
 		1304E59022DDDD7400BAF809 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1304E58F22DDDD7400BAF809 /* AddTaskViewModel.swift */; };
 		1304E59222DDE35500BAF809 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1304E59122DDE35500BAF809 /* TasksTableViewCell.swift */; };
+		2D7D1F7322DE228300740510 /* ViewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D1F7222DE228300740510 /* ViewRepo.swift */; };
+		2D7D1F7622DE239200740510 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7D1F7522DE239200740510 /* ButtonExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		1304E58D22DDDA7C00BAF809 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		1304E58F22DDDD7400BAF809 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
 		1304E59122DDE35500BAF809 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
+		2D7D1F7222DE228300740510 /* ViewRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepo.swift; sourceTree = "<group>"; };
+		2D7D1F7522DE239200740510 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,17 +95,11 @@
 		1304E55A22DC7D4A00BAF809 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
-				1304E57F22DD84AD00BAF809 /* Helpers */,
 				1304E55B22DC7D4A00BAF809 /* AppDelegate.swift */,
-				1304E55D22DC7D4A00BAF809 /* TasksViewController.swift */,
-				1304E58922DD96E500BAF809 /* AddTaskViewController.swift */,
-				1304E58F22DDDD7400BAF809 /* AddTaskViewModel.swift */,
-				1304E55F22DC7D4A00BAF809 /* Main.storyboard */,
-				1304E56222DC7D4C00BAF809 /* Assets.xcassets */,
-				1304E56422DC7D4C00BAF809 /* LaunchScreen.storyboard */,
-				1304E56722DC7D4C00BAF809 /* Info.plist */,
-				1304E58D22DDDA7C00BAF809 /* TaskModel.swift */,
-				1304E59122DDE35500BAF809 /* TasksTableViewCell.swift */,
+				1304E57F22DD84AD00BAF809 /* Helpers */,
+				2D7D1F6D22DE21C500740510 /* Modules */,
+				2D7D1F6E22DE21D600740510 /* Resources */,
+				2D7D1F6C22DE21B100740510 /* Config */,
 			);
 			path = ToDoApp;
 			sourceTree = "<group>";
@@ -118,6 +116,8 @@
 		1304E57F22DD84AD00BAF809 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2D7D1F7422DE238000740510 /* Utilities */,
+				2D7D1F7122DE226F00740510 /* Repo */,
 				1304E58022DD8A4800BAF809 /* TableView */,
 			);
 			path = Helpers;
@@ -131,6 +131,68 @@
 				1304E58B22DDCD6E00BAF809 /* TaskTableDataSource.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		2D7D1F6C22DE21B100740510 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				1304E56722DC7D4C00BAF809 /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		2D7D1F6D22DE21C500740510 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1304E55F22DC7D4A00BAF809 /* Main.storyboard */,
+				2D7D1F7022DE224800740510 /* Tasks */,
+				2D7D1F6F22DE223B00740510 /* AddTask */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		2D7D1F6E22DE21D600740510 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1304E56422DC7D4C00BAF809 /* LaunchScreen.storyboard */,
+				1304E56222DC7D4C00BAF809 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2D7D1F6F22DE223B00740510 /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				1304E58922DD96E500BAF809 /* AddTaskViewController.swift */,
+				1304E58F22DDDD7400BAF809 /* AddTaskViewModel.swift */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
+		2D7D1F7022DE224800740510 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				1304E55D22DC7D4A00BAF809 /* TasksViewController.swift */,
+				1304E58D22DDDA7C00BAF809 /* TaskModel.swift */,
+				1304E59122DDE35500BAF809 /* TasksTableViewCell.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		2D7D1F7122DE226F00740510 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				2D7D1F7222DE228300740510 /* ViewRepo.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		2D7D1F7422DE238000740510 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2D7D1F7522DE239200740510 /* ButtonExtension.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,10 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7D1F7622DE239200740510 /* ButtonExtension.swift in Sources */,
 				1304E58822DD8AF100BAF809 /* EmptyMessageView.swift in Sources */,
 				1304E59022DDDD7400BAF809 /* AddTaskViewModel.swift in Sources */,
 				1304E55E22DC7D4A00BAF809 /* TasksViewController.swift in Sources */,
 				1304E59222DDE35500BAF809 /* TasksTableViewCell.swift in Sources */,
+				2D7D1F7322DE228300740510 /* ViewRepo.swift in Sources */,
 				1304E55C22DC7D4A00BAF809 /* AppDelegate.swift in Sources */,
 				1304E58422DD8A4900BAF809 /* EmptyIndicatingTableView.swift in Sources */,
 				1304E58C22DDCD6E00BAF809 /* TaskTableDataSource.swift in Sources */,
@@ -407,7 +471,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZ6X2P729Y;
-				INFOPLIST_FILE = ToDoApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ToDoApp/Config/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,7 +491,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XZ6X2P729Y;
-				INFOPLIST_FILE = ToDoApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ToDoApp/Config/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

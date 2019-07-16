@@ -18,8 +18,7 @@ class TasksViewController: UIViewController {
     }()
     
     @IBAction func onAddTaskBtnTapped(_ sender: Any) {
-        let addTaskVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
-        addTaskVC.viewModel = AddTaskViewModel()
+        let addTaskVC = ViewRepo.getAddTasksVC()
         addTaskVC.delegate = self
         self.present(addTaskVC, animated: true, completion: nil)
     }
