@@ -42,10 +42,11 @@ class TasksViewModel {
     }
     
     func save(toDoList: [TaskModel]) {
-//        userDefault.sa
+        userDefault.setValue(NSKeyedArchiver.archivedData(withRootObject: toDoList),
+                             forKey: AppConstants.UserDefaultKeys.toDoList)
     }
     
-    func syncToDoList(list: [TaskModel]) {
+    func syncToDoList() {
         //yet to be implemented
     }
     

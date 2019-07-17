@@ -17,7 +17,7 @@ class TaskModel: NSObject, NSCoding {
     
     var dateAddedString: String {
         let dateFormatterReadable = DateFormatter()
-        dateFormatterReadable.dateFormat = "MMM dd, h:mm a"
+        dateFormatterReadable.dateFormat = "MMM dd, h:mm"
         return dateFormatterReadable.string(from: dateAdded)
     }
     
@@ -38,7 +38,7 @@ class TaskModel: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         taskId = aDecoder.decodeObject(forKey: "taskId") as! String
         taskTitle = aDecoder.decodeObject(forKey: "title") as! String
-        taskDescription = aDecoder.decodeObject(forKey: "taskDescription") as! String
+        taskDescription = aDecoder.decodeObject(forKey: "description") as! String
         dateAdded = aDecoder.decodeObject(forKey: "dateAdded") as! Date
     }
 }

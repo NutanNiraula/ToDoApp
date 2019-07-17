@@ -10,7 +10,10 @@ import UIKit
 
 class TaskTableDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    var model = [TaskModel(title: "Title", description: "Description")]
+    lazy var model: [TaskModel] = {
+        let data = UserDefaults.standard.value(forKey: AppConstants.UserDefaultKeys.toDoList)!
+        return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as! Data) as! [TaskModel]
+    }()
     
     private var taskTableView: EmptyIndicatingTableView!
     
@@ -31,6 +34,8 @@ class TaskTableDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             model.remove(at: indexPath.row)
+            UserDefaults.standard.setValue(NSKeyedArchiver.archivedData(withRootObject: model),
+                                           forKey: AppConstants.UserDefaultKeys.toDoList)
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }

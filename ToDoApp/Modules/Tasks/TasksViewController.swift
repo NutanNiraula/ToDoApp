@@ -32,7 +32,7 @@ final class TasksViewController: UIViewController {
     }
     
     @IBAction func onSyncButtonTapped(_ sender: Any) {
-        
+        viewModel.syncToDoList()
     }
     
     var activityIndicator = UIActivityIndicatorView()
@@ -93,6 +93,7 @@ extension TasksViewController: AddTaskViewControllerDelegate {
         taskTableDataSourceDelegate.model.append(task)
         taskTableView.insertRows(at: [IndexPath(row: taskTableDataSourceDelegate.model.count - 1, section: 0)], with: .left)
         taskTableView.scrollToRow(at: IndexPath(row: taskTableDataSourceDelegate.model.count - 1, section: 0), at: .bottom, animated: true)
+        viewModel.save(toDoList: taskTableDataSourceDelegate.model)
     }
     
 }
