@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct TaskModel {
+class TaskModel: NSObject, NSCoding {
     
     private(set) var taskId = UUID().uuidString
-    var title: String
-    var description: String
+    var taskTitle: String
+    var taskDescription: String
     private(set) var dateAdded: Date = Date()
     
     var dateAddedString: String {
@@ -23,8 +23,22 @@ struct TaskModel {
     
     init(title: String,
          description: String) {
-        self.title = title
-        self.description = description
+        self.taskTitle = title
+        self.taskDescription = description
     }
     
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(taskId, forKey: "taskId")
+        aCoder.encode(taskTitle, forKey: "title")
+        aCoder.encode(dateAdded, forKey: "dateAdded")
+        aCoder.encode(taskDescription, forKey: "description")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        taskId = aDecoder.decodeObject(forKey: "taskId") as! String
+        taskTitle = aDecoder.decodeObject(forKey: "title") as! String
+        taskDescription = aDecoder.decodeObject(forKey: "taskDescription") as! String
+        dateAdded = aDecoder.decodeObject(forKey: "dateAdded") as! Date
+    }
 }

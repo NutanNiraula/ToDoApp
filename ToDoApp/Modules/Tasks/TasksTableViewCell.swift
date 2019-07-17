@@ -16,8 +16,8 @@ final class TasksTableViewCell: UITableViewCell {
     
     var model: TaskModel! {
         didSet {
-            titleLabel.text = model.title
-            descriptionLabel.text = model.description
+            titleLabel.text = model.taskTitle
+            descriptionLabel.text = model.taskDescription
             dateLabel.text = model.dateAddedString
         }
     }

@@ -8,20 +8,19 @@
 
 import UIKit
 
-class MainNavigationController: UINavigationController {
-    
-}
+class MainNavigationController: UINavigationController {}
 
 struct ViewRepo {
     
     static func getMainNavigationController() -> MainNavigationController {
        let mainNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainNavigationController") as! MainNavigationController
+        mainNC.viewControllers = [ViewRepo.getTasksVC()]
         return mainNC
     }
     
     static func getTasksVC() -> TasksViewController {
         let tasksVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TasksViewController") as! TasksViewController
-        tasksVC.viewModel = TasksViewModel(urlsession: URLSession.shared)
+        tasksVC.viewModel = TasksViewModel(urlsession: URLSession.shared, userDefault: UserDefaults.standard)
         return tasksVC
     }
 

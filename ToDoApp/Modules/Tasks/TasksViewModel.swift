@@ -16,9 +16,11 @@ class TasksViewModel {
     var aboutInfoObserver: ((String) -> ())?
     var isLoadingDataObserver: ((Bool) -> ())?
     var errorObserver: ((String) -> ())?
+    var userDefault: UserDefaults!
     
-    init(urlsession: URLSession) {
+    init(urlsession: URLSession, userDefault: UserDefaults) {
         session = urlsession
+        self.userDefault = userDefault
     }
     
     func getAboutData() {
@@ -37,6 +39,10 @@ class TasksViewModel {
             }
         })
         task.resume()
+    }
+    
+    func save(toDoList: [TaskModel]) {
+//        userDefault.sa
     }
     
     func syncToDoList(list: [TaskModel]) {
