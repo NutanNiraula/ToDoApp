@@ -11,7 +11,7 @@ import UIKit
 class TaskTableDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     lazy var model: [TaskModel] = {
-        let data = UserDefaults.standard.value(forKey: AppConstants.UserDefaultKeys.toDoList)!
+        guard let data = UserDefaults.standard.value(forKey: AppConstants.UserDefaultKeys.toDoList) else { return [] }
         return try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as! Data) as! [TaskModel]
     }()
     
