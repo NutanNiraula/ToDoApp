@@ -12,12 +12,12 @@ protocol AddTaskViewControllerDelegate: class {
     func didSetTask(task: TaskModel)
 }
 
-class AddTaskViewController: UIViewController {
+final class AddTaskViewController: UIViewController {
 
     //MARK:- View Reference
     @IBOutlet var titleTextField: UITextField!
-    @IBOutlet var descriptionTextField: UITextField!
     @IBOutlet var addButton: UIButton!
+    @IBOutlet var descriptionTextView: ExpandableTextView!
     
     //MARK:- variables
     var viewModel: AddTaskViewModel!
@@ -26,7 +26,8 @@ class AddTaskViewController: UIViewController {
     //MARK:- view load
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextFieldDelegates()
+        setupTitleTextField()
+        setupDescriptionTextView()
         observeFormValidity()
     }
     
@@ -55,21 +56,49 @@ class AddTaskViewController: UIViewController {
 }
 
 //MARK:- TextField
-extension AddTaskViewController {
+extension AddTaskViewController: UITextFieldDelegate {
     
-    func setTextFieldDelegates() {
+    func setupTitleTextField() {
+        titleTextField.delegate = self
         titleTextField.addTarget(self, action: #selector(didChangeTitle), for: .editingChanged)
-        descriptionTextField.addTarget(self, action: #selector(didChangeDescription), for: .editingChanged)
     }
     
     @objc func didChangeTitle(textField : UITextField) {
         viewModel.title = textField.text
     }
     
-    @objc func didChangeDescription(textField : UITextField) {
-        viewModel.description = textField.text
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == titleTextField {
+            textField.resignFirstResponder()
+            descriptionTextView.becomeFirstResponder()
+        }
+        return true
     }
     
+}
+
+//MARK:- TextView
+extension AddTaskViewController: UITextViewDelegate {
+    
+    func setupDescriptionTextView() {
+        descriptionTextView.delegate = self
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == descriptionTextView {
+            descriptionTextView.placeholderLabel.isHidden = !textView.text.isEmpty
+        }
+        viewModel.description = textView.text
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard text != "\n" else {
+            textView.resignFirstResponder()
+            return false
+        }
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count <= 100
+    }
 }
 
 //MARK:- Utilities

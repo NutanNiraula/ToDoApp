@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TasksTableViewCell: UITableViewCell {
+final class TasksTableViewCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -20,11 +20,6 @@ class TasksTableViewCell: UITableViewCell {
             descriptionLabel.text = model.description
             dateLabel.text = model.dateAddedString
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
     }
 
 }

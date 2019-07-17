@@ -9,11 +9,16 @@
 import Foundation
 
 struct TaskModel {
+    
+    private(set) var taskId = UUID().uuidString
     var title: String
     var description: String
     private(set) var dateAdded: Date = Date()
+    
     var dateAddedString: String {
-        return "Added on: \(dateAdded)"
+        let dateFormatterReadable = DateFormatter()
+        dateFormatterReadable.dateFormat = "MMM dd, h:mm a"
+        return dateFormatterReadable.string(from: dateAdded)
     }
     
     init(title: String,
@@ -21,4 +26,5 @@ struct TaskModel {
         self.title = title
         self.description = description
     }
+    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TasKTableDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
+class TaskTableDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     var model = [TaskModel(title: "Title", description: "Description")]
     
@@ -46,7 +46,7 @@ class TasKTableDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewD
     
 }
 
-extension TasKTableDataSourceDelegate: EmptyTableViewIndicatorDataSource {
+extension TaskTableDataSourceDelegate: EmptyTableViewIndicatorDataSource {
     
     func viewForEmptyTableView(_ tableView: UITableView) -> UIView {
         return EmptyMessageImageView()
